@@ -2,6 +2,9 @@
 
 Ansible collection with roles to install GitLab community edition, enterprise edition and GitLab runners.
 
+[![Tests](https://img.shields.io/github/actions/workflow/status/srv6d/ansible_collection_gitlab/molecule.yml?branch=main&label=Tests)](https://github.com/SRv6d/ansible_collection_gitlab/actions/workflows/molecule.yml)
+[![Ansible Galaxy](https://img.shields.io/badge/Ansible%20Galaxy-srv6d.gitlab-blue)](https://galaxy.ansible.com/srv6d/gitlab)
+
 ## Example Playbook
 
 ```yaml
