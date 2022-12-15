@@ -31,6 +31,9 @@ jobs:
             exit 1
           fi
         # yamllint enable rule:line-length rule:indentation
+      - name: create empty README.md files for ansible-galaxy
+        run: find . -type d -maxdepth 1 -exec touch {}/README.md \;
+        working-directory: ${{ env.CHECKOUT_PATH }}/roles
       - name: build collection
         run: ansible-galaxy collection build
         working-directory: ${{ env.CHECKOUT_PATH }}
