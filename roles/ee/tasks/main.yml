@@ -1,0 +1,6 @@
+---
+- name: Include GitLab role
+  ansible.builtin.include_role:
+    name: srv6d.gitlab.gitlab
+  vars:
+    gitlab_edition: enterprise

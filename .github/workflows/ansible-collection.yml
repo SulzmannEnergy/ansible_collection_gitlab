@@ -1,0 +1,39 @@
+---
+name: Ansible Galaxy Collection Build & Publish
+on:
+  release:
+    types: [released]
+env:
+  CHECKOUT_PATH: ansible_collections/srv6d/gitlab
+jobs:
+  ansible-collection-build-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: ${{ env.CHECKOUT_PATH }}
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      - run: >-
+          sudo apt update &&
+          sudo apt install -y jq &&
+          pip3 install yq &&
+          pip3 install -r ${{ env.CHECKOUT_PATH }}/.github/collection-requirements.txt
+      - name: assert tag matches version
+        # yamllint disable rule:line-length rule:indentation
+        run: |
+          TAG=${{ github.event.release.tag_name }}
+          TAG_VERSION=${TAG:1}
+          COLLECTION_VERSION=$(yq -re '.version' ${{ env.CHECKOUT_PATH }}/galaxy.yml)
+          if [ "$TAG_VERSION" != "$COLLECTION_VERSION" ]; then
+            echo "Tag version $TAG_VERSION does not match collection version $COLLECTION_VERSION"
+            exit 1
+          fi
+        # yamllint enable rule:line-length rule:indentation
+      - name: build collection
+        run: ansible-galaxy collection build
+        working-directory: ${{ env.CHECKOUT_PATH }}
+      - name: publish Collection
+        run: ansible-galaxy collection publish *.tar.gz --token ${{ secrets.ANSIBLE_GALAXY_TOKEN }}
+        working-directory: ${{ env.CHECKOUT_PATH }}

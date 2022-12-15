@@ -1,0 +1,7 @@
+---
+- name: Import gitlab_runner installation task for debian based systems
+  ansible.builtin.import_tasks: gitlab_runner-install.yml
+  when: ansible_os_family == "Debian"
+
+- name: Import gitlab_runner registration task
+  ansible.builtin.import_tasks: gitlab_runner-register.yml

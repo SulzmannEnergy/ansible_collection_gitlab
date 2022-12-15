@@ -1,0 +1,25 @@
+---
+- name: Include os specific variables
+  ansible.builtin.include_vars: os/{{ ansible_os_family }}.yml
+
+- name: Import GitLab repository installation task for debian based systems
+  ansible.builtin.import_tasks: gitlab-repository-install-debian_based.yml
+  when: ansible_os_family == "Debian"
+
+- name: Import GitLab package installation task for debian based systems
+  ansible.builtin.import_tasks: gitlab-install_packages-debian_based.yml
+  when: ansible_os_family == "Debian"
+
+- name: Import GitLab configuration task
+  ansible.builtin.import_tasks: gitlab-configure.yml
+
+- name: Run handlers
+  ansible.builtin.meta: flush_handlers
+
+- name: Import GitLab disable signup task
+  ansible.builtin.import_tasks: gitlab-disable_signup.yml
+  when: gitlab_disable_signup
+
+- name: Import GitLab block root user task
+  ansible.builtin.import_tasks: gitlab-block_root_user.yml
+  when: gitlab_root_user_blocked

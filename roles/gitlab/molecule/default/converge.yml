@@ -1,0 +1,43 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: install basic dependencies in debian based conatainers
+      ansible.builtin.apt:
+        name:
+          - sudo
+          - iproute2
+          - procps
+          - curl
+          - locales
+        state: present
+      when: ansible_os_family == "Debian"
+    - name: set locale
+      community.general.locale_gen:
+        name: en_US.UTF-8
+        state: present
+    - name: create directory for testing certificates
+      ansible.builtin.file:
+        path: /etc/ssl/snakeoil
+        state: directory
+    - name: generate snakeoil ssl keys and certificates for testing
+      ansible.builtin.command:
+        cmd: >
+          openssl req -new -newkey ec -pkeyopt ec_paramgen_curve:prime256v1
+          -days 2
+          -nodes
+          -x509
+          -keyout snakeoil-ecdsa-prime256v1.key
+          -out snakeoil-ecdsa-prime256v1.crt
+          -subj
+          '/C=GB/ST=London/L=London/O=SRv6d SNAKEOIL/OU=CI\/CD/CN=git.example.com'
+          -addext "subjectAltName = DNS:git.example.com"
+        chdir: /etc/ssl/snakeoil
+        creates: /etc/ssl/snakeoil/snakeoil-ecdsa-prime256v1.key
+    - name: change permissions of generated keys
+      ansible.builtin.file:
+        path: /etc/ssl/snakeoil/snakeoil-ecdsa-prime256v1.key
+        mode: 0644
+    - name: Include gitlab
+      ansible.builtin.include_role:
+        name: gitlab

@@ -1,0 +1,24 @@
+---
+- name: GitLab start
+  ansible.builtin.command:
+    cmd: gitlab-ctl start
+
+- name: GitLab stop
+  ansible.builtin.command:
+    cmd: gitlab-ctl stop
+
+- name: GitLab restart
+  ansible.builtin.command:
+    cmd: gitlab-ctl restart
+
+- name: GitLab reconfigure
+  ansible.builtin.command:
+    cmd: gitlab-ctl reconfigure
+
+- name: GitLab root password reset
+  ansible.builtin.expect:
+    command: gitlab-rake 'gitlab:password:reset[root]'
+    responses:
+      .*password.*: "{{ gitlab_root_user_password | string }}"
+    timeout: 120
+  no_log: true

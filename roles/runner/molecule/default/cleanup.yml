@@ -1,0 +1,7 @@
+---
+- name: Cleanup
+  hosts: all
+  tasks:
+    - name: Unregister GitLab runner
+      ansible.builtin.command:
+        cmd: gitlab-runner unregister --name '{{ ansible_fqdn }}'

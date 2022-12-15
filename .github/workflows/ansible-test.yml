@@ -1,0 +1,26 @@
+---
+name: Ansible Test
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  schedule:
+    - cron: 0 12 */2 * *
+env:
+  CHECKOUT_PATH: ansible_collections/srv6d/gitlab
+jobs:
+  ansible-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: ${{ env.CHECKOUT_PATH }}
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      - run: >-
+          pip3 install -r ${{ env.CHECKOUT_PATH }}/.github/collection-requirements.txt
+      - name: run ansible sanity tests
+        run: ansible-test sanity
+        working-directory: ${{ env.CHECKOUT_PATH }}
