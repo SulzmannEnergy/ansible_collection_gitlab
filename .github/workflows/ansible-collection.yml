@@ -35,5 +35,7 @@ jobs:
         run: ansible-galaxy collection build
         working-directory: ${{ env.CHECKOUT_PATH }}
       - name: publish Collection
-        run: ansible-galaxy collection publish *.tar.gz --token ${{ secrets.ANSIBLE_GALAXY_TOKEN }}
+        run: >-
+          ansible-galaxy collection publish *.tar.gz
+          --token ${{ secrets.ANSIBLE_GALAXY_TOKEN }}
         working-directory: ${{ env.CHECKOUT_PATH }}
