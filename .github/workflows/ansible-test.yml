@@ -11,7 +11,7 @@ env:
   CHECKOUT_PATH: ansible_collections/srv6d/gitlab
 jobs:
   ansible-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
         with:
