@@ -80,6 +80,14 @@ Ansible collection with roles to install GitLab community edition, enterprise ed
 | gitlab_runner_docker_runtime         | no       | _null_                          | `str`       | The runtime for Docker containers.                                             |
 | gitlab_runner_allow_custom_build_dir | no       | `true`                          | `bool`      | Allow user to define a custom build directory for a job.                       |
 
+## Supported distributions
+
+The roles in this collection are tested on the following, but may also work with other debain based distributions:
+
+- Ubuntu
+  - 20.04 LTS (Focal Fossa)
+  - 22.04 LTS (Jammy Jellyfish)
+
 ## License
 
 [GNU General Public License v3.0](./LICENSE)
