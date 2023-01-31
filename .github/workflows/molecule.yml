@@ -6,7 +6,7 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: 0 12 */2 * *
+    - cron: 30 20 */2 * *
 env:
   RUNNER_REGISTRATION_TOKEN: ${{ secrets.RUNNER_REGISTRATION_TOKEN }}
 jobs:
