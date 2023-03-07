@@ -88,6 +88,14 @@ The roles in this collection are tested on the following, but may also work with
   - 20.04 LTS (Focal Fossa)
   - 22.04 LTS (Jammy Jellyfish)
 
+## Requirements
+
+- `ansible`
+- `passlib`
+
+These can be obtained by running `pip3 install -r requirements.txt` in
+the base of the repository.
+
 ## License
 
 [GNU General Public License v3.0](./LICENSE)
