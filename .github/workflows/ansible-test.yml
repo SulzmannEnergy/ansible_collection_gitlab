@@ -19,8 +19,8 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: 3.11
-      - run: >-
-          pip3 install -r ${{ env.CHECKOUT_PATH }}/.github/collection-requirements.txt
+      - name: install collection pip requirements
+        run: pip3 install -r ${{ env.CHECKOUT_PATH }}/requirements.txt
       - name: run ansible sanity tests
         run: ansible-test sanity
         working-directory: ${{ env.CHECKOUT_PATH }}
