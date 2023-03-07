@@ -7,4 +7,5 @@ _gitlab_default_registry_nginx_listen_addresses:
   - unix:/run/gitlab/nginx-registry.sock
 _gitlab_hashed_root_user_password: >-
   {{ gitlab_root_user_password | string
-  | password_hash('sha512', 65534 | random(seed=inventory_hostname) | string) }}
+  | ansible.builtin.password_hash('sha512', 65534 | random(seed=inventory_hostname)
+  | string) }}

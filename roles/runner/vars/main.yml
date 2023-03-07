@@ -40,5 +40,5 @@ _gitlab_runner_config_state_hash_wanted: >
   + gitlab_runner_docker_privileged | string
   + gitlab_runner_docker_runtime | default("NONE")
   + gitlab_runner_allow_custom_build_dir | string)
-  | password_hash("sha256", "runner")
+  | ansible.builtin.password_hash("sha256", "runner")
   }}
