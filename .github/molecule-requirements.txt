@@ -1,4 +1,5 @@
 ansible==7.2.0
+passlib==1.7.4
 molecule==4.0.4
 molecule-docker==2.1.0
 pytest-molecule==2.0.0
