@@ -8,7 +8,18 @@ authors:
 description: Deploy and manage GitLab CE/EE and GitLab runners.
 license:
   - GPL-3.0-only
-tags: [gitlab, runner, git, ci, devops, automation, system]
+tags:
+  - gitlab
+  - runner
+  - git
+  - ci
+  - devops
+  - automation
+  - system
+  - application
+  - cloud
+  - infrastructure
+  - tools
 dependencies:
   ansible.utils: ">=2.0.1"
 repository: https://github.com/srv6d/ansible_collection_gitlab
