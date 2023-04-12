@@ -2,3 +2,5 @@ roles/gitlab/handlers/main.yml no-changed-when
 roles/runner/tasks/gitlab_runner-register.yml no-changed-when
 roles/gitlab/tasks/gitlab-disable_signup.yml no-changed-when
 roles/gitlab/tasks/gitlab-block_root_user.yml no-changed-when
+roles/runner/tasks/gitlab_runner-install.yml risky-shell-pipe
+roles/gitlab/tasks/gitlab-disable_signup.yml risky-shell-pipe
