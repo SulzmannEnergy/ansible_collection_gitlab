@@ -25,7 +25,7 @@
   ansible.builtin.command:
     cmd: "{{ _gitlab_runner_unregistration_command }}"
   when:
-    - _gitlab_runner_config_state_hash_current != ""
+    - _gitlab_runner_config_state_hash_current
     - _gitlab_runner_config_state_hash_current
       != _gitlab_runner_config_state_hash_wanted
 
