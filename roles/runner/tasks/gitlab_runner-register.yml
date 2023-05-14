@@ -21,6 +21,54 @@
     _gitlab_runner_config_state_hash_current: >-
       {{ _slurp_configuration_hash['content'] | b64decode }}
 
+- name: debug vars
+  ansible.builtin.debug:
+    var: _gitlab_runner_config_state_hash_current
+
+- name: debug vars
+  ansible.builtin.debug:
+    var: gitlab_runner_ci_server_url
+
+- name: debug vars
+  ansible.builtin.debug:
+    var: gitlab_runner_registration_token
+
+- name: debug vars
+  ansible.builtin.debug:
+    var: gitlab_runner_tags | default("NONE") | join() | string
+
+- name: debug vars
+  ansible.builtin.debug:
+    var: gitlab_runner_executor | default("NONE")
+
+- name: debug vars
+  ansible.builtin.debug:
+    var: gitlab_runner_run_untagged | string
+
+- name: debug vars
+  ansible.builtin.debug:
+    var: gitlab_runner_limit | string
+
+- name: debug vars
+  ansible.builtin.debug:
+    var: gitlab_runner_docker_image
+
+- name: debug vars
+  ansible.builtin.debug:
+    var: gitlab_runner_docker_privileged | string
+
+- name: debug vars
+  ansible.builtin.debug:
+    var: gitlab_runner_docker_runtime | default("NONE")
+
+- name: debug vars
+  ansible.builtin.debug:
+    var: gitlab_runner_allow_custom_build_dir | string
+
+- name: debug vars
+  ansible.builtin.debug:
+    var: _gitlab_runner_config_state_hash_wanted
+
 - name: Unregister GitLab runner
   ansible.builtin.command:
     cmd: "{{ _gitlab_runner_unregistration_command }}"
