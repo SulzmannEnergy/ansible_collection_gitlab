@@ -1,3 +1,5 @@
+⚠️ This collection is no longer maintained.
+
 # GitLab Ansible Colletion
 
 Ansible collection with roles to install GitLab community edition, enterprise edition and GitLab runners.
