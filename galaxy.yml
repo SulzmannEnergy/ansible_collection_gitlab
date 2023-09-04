@@ -4,7 +4,7 @@ name: gitlab
 version: 1.0.2
 readme: README.md
 authors:
-  - Marvin Vogt <git@srv6d.space>
+  - Andreas Hartmann <andreas.hartmann@sulzmann.energy
 description: Deploy and manage GitLab CE/EE and GitLab runners.
 license:
   - GPL-3.0-only
@@ -22,8 +22,8 @@ tags:
   - tools
 dependencies:
   ansible.utils: ">=2.0.1"
-repository: https://github.com/srv6d/ansible_collection_gitlab
-issues: https://github.com/srv6d/ansible_collection_gitlab/issues
+repository: https://github.com/SulzmannEnergy/ansible_collection_gitlab
+issues: https://github.com/SulzmannEnergy/ansible_collection_gitlab/issues
 build_ignore:
   - .github
   - .ansible-lint
