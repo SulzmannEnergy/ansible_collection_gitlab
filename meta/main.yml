@@ -1,32 +1,32 @@
-galaxy_info:
-  namespace: sulzmann-energy
-  name: gitlab
-  version: 1.0.3
-  readme: README.md
-  authors:
-    - Andreas Hartmann <andreas.hartmann@sulzmann.energy>
-    - Marvin Vogt <git@srv6d.space>
-  description: Deploy and manage GitLab CE/EE and GitLab runners.
-  license: GPLv3
-  galaxy_tags:
-    - gitlab
-    - runner
-    - git
-    - ci
-    - devops
-    - automation
-    - system
-    - application
-    - cloud
-    - infrastructure
-    - tools
-  repository: https://github.com/SulzmannEnergy/ansible_collection_gitlab
-  issues: https://github.com/SulzmannEnergy/ansible_collection_gitlab/issues
-  build_ignore:
-    - .github
-    - .ansible-lint
-    - .yamllint
-    - roles/gitlab/molecule
-    - roles/runner/molecule
-dependencies:
-  - ansible.utils: ">=2.0.1"
+#galaxy_info:
+#  namespace: sulzmann-energy
+#  name: gitlab
+#  version: 1.0.3
+#  readme: README.md
+#  authors:
+#    - Andreas Hartmann <andreas.hartmann@sulzmann.energy>
+#    - Marvin Vogt <git@srv6d.space>
+#  description: Deploy and manage GitLab CE/EE and GitLab runners.
+#  license: GPLv3
+#  galaxy_tags:
+#    - gitlab
+#    - runner
+#    - git
+#    - ci
+#    - devops
+#    - automation
+#    - system
+#    - application
+#    - cloud
+#    - infrastructure
+#    - tools
+#  repository: https://github.com/SulzmannEnergy/ansible_collection_gitlab
+#  issues: https://github.com/SulzmannEnergy/ansible_collection_gitlab/issues
+#  build_ignore:
+#    - .github
+#    - .ansible-lint
+#    - .yamllint
+#    - roles/gitlab/molecule
+#    - roles/runner/molecule
+#dependencies:
+#  - ansible.utils: ">=2.0.1"
