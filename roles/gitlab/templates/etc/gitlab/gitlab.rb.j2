@@ -2098,6 +2098,11 @@ registry_nginx['ssl_certificate_key'] = "{{ gitlab_registry_nginx_ssl_certificat
 ##! Docs: https://docs.gitlab.com/ee/administration/monitoring/prometheus/node_exporter.html
 ################################################################################
 
+node_exporter['enable'] = "{{ gitlab_node_exporter_enable }}"
+
+{% if gitlab_node_exporter_listen_address is defined %}
+node_exporter['listen_address'] = "{{ gitlab_node_exporter_listen_address }}"
+{% endif %}
 # node_exporter['enable'] = true
 # node_exporter['home'] = '/var/opt/gitlab/node-exporter'
 # node_exporter['log_directory'] = '/var/log/gitlab/node-exporter'

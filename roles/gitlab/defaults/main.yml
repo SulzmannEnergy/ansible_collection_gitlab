@@ -6,3 +6,4 @@ gitlab_registry_nginx_listen_port: 5050
 gitlab_registry_enable: true
 gitlab_smtp_enable: false
 gitlab_smtp_port: 465
+gitlab_node_exporter_enable: false
